@@ -12,7 +12,7 @@ public class ShoppingCart implements IShoppingCart {
                                                                           // save the order of insertion
     Pricer pricer;
 
-    public static long count = 0;
+    public static long count = 0; // to keep track of print receipt function call
 
     public ShoppingCart(Pricer pricer) {
         this.pricer = pricer;
@@ -30,7 +30,7 @@ public class ShoppingCart implements IShoppingCart {
 
     public void printReceipt() {
         count++;
-        Integer total = 0;
+        Integer total = 0; // to get total amount
         Object[] keys = contents.keySet().toArray();
         if (count == 1) {
             for (int i = 0; i < Array.getLength(keys); i++) {
@@ -38,7 +38,8 @@ public class ShoppingCart implements IShoppingCart {
                 total = total + price;
                 Float priceFloat = new Float(new Float(price) / 100);
                 String priceString = String.format("€%.2f", priceFloat);
-                System.out.println(keys[i] + " - " + contents.get(keys[i]) + " - " + priceString);
+                System.out.println(keys[i] + " - " + contents.get(keys[i]) + " - " + priceString); // print prices after
+                                                                                                   // items
             }
 
         } else if (count == 2) {
@@ -47,9 +48,10 @@ public class ShoppingCart implements IShoppingCart {
                 total = total + price;
                 Float priceFloat = new Float(new Float(price) / 100);
                 String priceString = String.format("€%.2f", priceFloat);
-                System.out.println(priceString + " - " + contents.get(keys[i]) + " - " + keys[i]);
+                System.out.println(priceString + " - " + contents.get(keys[i]) + " - " + keys[i]); // printing items
+                                                                                                   // after prices
             }
-            count = 0;
+            count = 0; // make count =0 for next test case
 
         }
 
